@@ -7,7 +7,8 @@ There are two packages blob_following_bot and blob_interfaces. The blob_interfac
 
 You can clone this repository to your local machine and build the package using colcon
 
-Usage
+## Usage
+
 To run the object detection and following package, you need to:
 
 Launch the webcam driver node using (Publishes data from the webcam to ROS2 topic):
@@ -28,10 +29,11 @@ ros2 launch blob_following_bot follow_blob
 
 By default, the package is set to follow green blobs, but you can easily change this by modifying line 12 in [follow_blob.py](https://github.com/AmzArch/Moving_Colour_Object_Follower/blob/main/src/blob_following_bot/blob_following_bot/follow_blob.py).
 
-Testing
+
+## Testing
 To test the package, you can either simulate it in Gazebo or run it on a Turtlebot3 Lite.
 
-Simulation
+## Simulation
 To simulate the package in Gazebo, you need to launch the simulation using:
 ```
 ros2 launch turtlebot3_gazebo turtlebot3_empty_world.launch.py
