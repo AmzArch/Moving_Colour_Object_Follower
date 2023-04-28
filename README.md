@@ -38,3 +38,5 @@ To simulate the package in Gazebo, you need to launch the simulation using:
 ```
 ros2 launch turtlebot3_gazebo turtlebot3_empty_world.launch.py
 ```
+
+More information on launching the simulation can be found [here](https://ubuntu.com/blog/simulate-the-turtlebot3)
