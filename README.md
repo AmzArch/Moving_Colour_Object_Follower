@@ -40,3 +40,16 @@ ros2 launch turtlebot3_gazebo turtlebot3_empty_world.launch.py
 ```
 
 More information on launching the simulation can be found [here](https://ubuntu.com/blog/simulate-the-turtlebot3)
+
+
+## ROS Packages
+
+blob_interfaces: 
+  This package contains the necessary components to enable the custom ROS Message BlobsList and Blob used in our main package
+
+blob_following_bot:
+  This package has three nodes:
+    1. image_publisher: This node is used to publish the webcam view from laptop/pc to the ros topic /image to simulate the object being tracked. With a real topic we can directly subscribe to the /color/preview/image topic
+    2. moving_blob_detector: This node subscribes to the /image topic (In real turtlebot switch to /color/preview/image topic) and then apply HSV filters and backgreound subtraction techniques to isolate only the moving blobs in the image of Red, Blue and Green Colour. It then publishes them to the /detected_blobs topic
+    Note*: blob_detector is an old file that just publishes the position of the Red Green and Blue blobs and does not check if they are moving
+    3. follow_blob: This node subscribes to the /detected_blobs topic and then according ot the color set in line 12 of the code (green in this case) follows the largest blob of the given color by tracking the centroid of the blob on the screen and giving proportial forward velocity depending on the area of the blob.
