@@ -58,3 +58,7 @@ blob_following_bot:
     Note*: blob_detector is an old file that just publishes the position of the Red Green and Blue blobs and does not check if they are moving
     
     3. follow_blob: This node subscribes to the /detected_blobs topic and then according ot the color set in line 12 of the code (green in this case) follows the largest blob of the given color by tracking the centroid of the blob on the screen and giving proportial forward velocity depending on the area of the blob.
+     Markup : 1. A numbered list
+              1. A nested numbered list
+              2. Which is numbered
+          2. Which is numbered
