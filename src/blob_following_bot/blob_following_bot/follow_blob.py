@@ -24,12 +24,9 @@ class BlobFollower(Node):
     def follow_blob(self, blob):
         twist = Twist()
         
-        '''
-        The constant value of 480*640 represents the total number of pixels in the image captured by my webcam.
-        Change this value to match the resolution of your own webcam.
-        You can also adjust the multiplier value as needed.
-        '''
-        
+        # The constant value of 480*640 represents the total number of pixels in the image captured by my webcam.
+        # Change this value to match the resolution of your own webcam.
+        # You can also adjust the multiplier value as needed        
         
         # check if area is decreasing or increasing
         if blob.area < self.prev_area:
