@@ -10,6 +10,7 @@ class BlobFollower(Node):
         self.cmd_vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
         self.blobs_sub = self.create_subscription(BlobsList, '/detected_blobs', self.blobs_callback, 10)
         self.color = 'green'   # choose the desired color of the blob to follow
+        self.prev_area = 0     # initialize previous area to zero
 
     def blobs_callback(self, msg):
         largest_blob = None
@@ -22,14 +23,18 @@ class BlobFollower(Node):
 
     def follow_blob(self, blob):
         twist = Twist()
-        #assuming max area 480*640
-        speed = 1.5*blob.area/(480*640)
-        twist.linear.x = speed  
+        # check if area is decreasing or increasing
+        if blob.area < self.prev_area:
+            speed = 2.0*blob.area/(480*640)   # increase speed if area is decreasing
+        else:
+            speed = 1.0*blob.area/(480*640)   # decrease speed if area is increasing
+        twist.linear.x = speed
         if blob.x < 240:  # if blob is on the left side of the image
             twist.angular.z = 0.5  # turn left
         else:
             twist.angular.z = -0.5  # turn right
         self.cmd_vel_pub.publish(twist)
+        self.prev_area = blob.area   # update previous area to current area
 
 def main(args=None):
     rclpy.init(args=args)
@@ -40,5 +45,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-
-
