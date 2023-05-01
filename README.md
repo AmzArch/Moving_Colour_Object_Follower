@@ -44,10 +44,10 @@ More information on launching the simulation can be found [here](https://ubuntu.
 
 ## ROS Packages
 
-blob_interfaces: 
+`blob_interfaces`: 
   This package contains the necessary components to enable the custom ROS Message BlobsList and Blob used in our main package
 
-blob_following_bot:
+`blob_following_bot`:
 
   This package has three nodes:
 
