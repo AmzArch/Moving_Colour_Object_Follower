@@ -56,4 +56,4 @@ This package has three nodes:
 
     *Note*: `blob_detector` is an old file that just publishes the position of the Red, Green, and Blue blobs and does not check if they are moving.
 
-3. `follow_blob`: This node subscribes to the `/detected_blobs` topic and then, according to the color set in line 12 of the code (green in this case), follows the largest blob of the given color by tracking the centroid of the blob on the screen and giving proportional velocity depending on the area and position of the blob.
+3. `follow_blob`: This node subscribes to the /detected_blobs topic and tracks the largest blob of a specific color (set in line 12 of the code, which is currently green) by monitoring its centroid on the screen. It then adjusts the bot's velocity in proportion to how the area of the blob is changing, as well as its position on the screen. Specifically, if the area is decreasing, the bot will move forward faster, while if the area is increasing, the bot will move backwards.
